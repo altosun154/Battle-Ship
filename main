@@ -1,0 +1,45 @@
+'''
+Battleship Game - Source Code
+
+This source code implements a console-based Battleship game.
+Players place ships on a board and take turns guessing the
+coordinates to sink their opponent's ships. The game is played
+between two players, and the board size and ship configurations
+are customizable.
+
+
+Source Code Dependencies:
+- board.py: Contains the Ship and Board classes for managing the game board.
+- game.py: Contains the Player and BattleshipGame classes for handling gameplay.
+
+Usage:
+- Run this script to play a round of Battleship between two players.
+
+'''
+
+from board import Ship, Board  # Importing Ship and Board classes from the 'board' module.
+from game import Player, BattleshipGame  # Importing Player and BattleshipGame classes from the 'game' module.
+
+
+def main():
+    # Configuration settings
+    board_size = 5
+    ship_list = [5, 4, 3, 3, 2]
+
+    # Initialize player boards and players
+    player1_board = Board(board_size)
+    player2_board = Board(board_size)
+    player1 = Player("Player 1", player1_board, ship_list)
+    player2 = Player("Player 2", player2_board, ship_list)
+
+    # Set ships on player boards
+    player1.set_all_ships()
+    player2.set_all_ships()
+
+    # Initialize and play the game
+    game = BattleshipGame(player1, player2)
+    game.play()
+
+
+if __name__ == "__main__":
+    main()
